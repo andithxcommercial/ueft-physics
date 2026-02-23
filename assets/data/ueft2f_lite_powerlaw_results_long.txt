@@ -1,0 +1,28 @@
+UEFT‑2F LITE (Power‑Law Scale‑Dependent Growth) – LONG MCMC
+============================================================
+Fixed: f*=0.7, μ₀=0.0, α₀=0.8, a_trans=0.35, k*=0.02 h/Mpc
+Free parameters: H₀, Ω_m, γ₀
+Data: RSD=16, S₈=3, BAO=13
+MCMC: 1000 steps, 12 walkers
+
+H0      : 67.4590 ± 0.9790
+Omega_m : 0.3046 ± 0.0082
+gamma0  : 0.0352 ± 0.0123
+
+Best fit:
+H0       = 67.4198
+Omega_m  = 0.3040
+gamma0   = 0.0345
+
+Observables:
+S8 = 0.7833
+S8_reduction = 5.49%
+f(a=1) = 0.6136
+
+χ² breakdown:
+RSD = 9.43
+S₈ = 10.37
+BAO = 15.87
+Total = 35.66
+ΛCDM total = 65.77
+Δχ² = -30.11

@@ -7,126 +7,419 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌀</text></svg>">
+    <style>
+        /* Additional glassmorphism effects */
+        .glass {
+            background: rgba(30, 36, 63, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(77, 124, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(157, 78, 221, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background: var(--bg-accent);
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--accent-teal);
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .data-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tr:hover {
+            background: rgba(77, 124, 255, 0.05);
+        }
+        
+        .param-value {
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        
+        .param-error {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .image-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .image-card-content {
+            padding: 1.5rem;
+        }
+        
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 23, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .hero {
+            padding-top: 8rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero">
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">UEFT</a>
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#results">Results</a>
+                <a href="#lattice">Lattice</a>
+                <a href="#cosmology">Cosmology</a>
+                <a href="#paper">Paper</a>
+                <a href="#philosophy">Philosophy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
             <div class="hero-content fade-in" style="animation-delay: 0.2s;">
                 <h1>Unified Entanglement Field Theory</h1>
                 <p class="subtitle">
-                    A single framework from lattice gauge theory to cosmology.
-                    Coherence as the universal organizational principle across scales.
+                    A single mathematical framework connecting lattice gauge theory to cosmology.
+                    Coherence emerges as the universal organizational principle across scales.
                 </p>
                 <div class="btn-group">
                     <a href="#paper" class="btn">
                         📄 Read the Paper
                     </a>
                     <a href="#results" class="btn btn-outline">
-                        📊 View Results
+                        📊 Explore Results
                     </a>
-                    <a href="#philosophy" class="btn btn-outline">
-                        🧭 Philosophical Outlook
+                    <a href="https://github.com/andithxcommercial/ueft-physics" class="btn btn-outline" target="_blank">
+                        ⭐ GitHub Repo
                     </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Overview Cards -->
-        <section id="overview">
-            <h2>Bridging Scales: From Lattice to Cosmos</h2>
-            <p class="subtitle" style="font-size: 1.2rem; margin-bottom: 3rem;">
-                The same mathematical structure—coherence flow toward an attractor—appears in
-                lattice simulations and cosmological evolution.
-            </p>
-            <div class="card-grid">
-                <div class="card fade-in" style="animation-delay: 0.4s;">
-                    <div class="card-icon">🔬</div>
-                    <h3>Lattice UEFT</h3>
-                    <p>
-                        GL(3,ℂ) link variables on a discrete torus. Holonomy terms drive coherence,
-                        with a phase transition at κ<sub>crit</sub> ≈ 0.89. Coherence length ξ ≈ 2.7 lattice units.
-                    </p>
-                </div>
-                <div class="card fade-in" style="animation-delay: 0.6s;">
-                    <div class="card-icon">🌌</div>
-                    <h3>UEFT‑2F Cosmology</h3>
-                    <p>
-                        Two interacting fields: coherent (dark‑energy‑like, w = −1) and decoherent
-                        (dark‑matter‑like, w = 0). Natural 70/30 attractor explains the dark‑sector split.
-                    </p>
-                </div>
-                <!-- UEFT‑Medic removed -->
+    <!-- Key Results Summary -->
+    <section id="results" class="container fade-in" style="animation-delay: 0.4s;">
+        <h2>Key Results</h2>
+        <p class="subtitle" style="font-size: 1.2rem; margin-bottom: 2rem;">
+            UEFT‑2F Lite: A minimal, lattice‑calibrated cosmological model with only three free parameters.
+            Scale‑dependent friction suppresses structure growth, naturally alleviating the S₈ tension.
+        </p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">5.5%</div>
+                <div class="stat-label">S₈ Reduction</div>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">From Planck value</p>
             </div>
-        </section>
-
-        <!-- Results Highlight -->
-        <section id="results" class="results-highlight fade-in" style="animation-delay: 1s;">
-            <h2>UEFT‑2F Lite: Key Results</h2>
-            <p style="max-width: 800px; margin: 0 auto 3rem;">
-                A minimal, lattice‑calibrated cosmological model with only three free parameters
-                (H<sub>0</sub>, Ω<sub>m</sub>, γ<sub>0</sub>). Scale‑dependent friction suppresses
-                structure growth, alleviating the S<sub>8</sub> tension.
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                <div>
-                    <div class="result-number">5.5%</div>
-                    <div class="result-label">S<sub>8</sub> reduction</div>
-                </div>
-                <div>
-                    <div class="result-number">0.7833</div>
-                    <div class="result-label">S<sub>8</sub> = 0.7833 ± 0.0073</div>
-                </div>
-                <div>
-                    <div class="result-number">−30.1</div>
-                    <div class="result-label">Δχ² vs ΛCDM</div>
-                </div>
-                <div>
-                    <div class="result-number">3</div>
-                    <div class="result-label">Free parameters</div>
-                </div>
+            <div class="stat-card">
+                <div class="stat-value">0.7833</div>
+                <div class="stat-label">S₈ = 0.7833 ± 0.0073</div>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Consistent with weak lensing</p>
             </div>
-            <p style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
-                Constraints: H<sub>0</sub> = 67.42 ± 0.98 km/s/Mpc, Ω<sub>m</sub> = 0.3040 ± 0.0082,
-                γ<sub>0</sub> = 0.0345 ± 0.0123, f(z=0) = 0.6136.
-            </p>
-        </section>
+            <div class="stat-card">
+                <div class="stat-value">−30.1</div>
+                <div class="stat-label">Δχ² vs ΛCDM</div>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Better fit to RSD+BAO data</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Free Parameters</div>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem">H₀, Ωₘ, γ₀ (minimal)</p>
+            </div>
+        </div>
 
-        <!-- Paper Download -->
-        <section id="paper" class="fade-in" style="animation-delay: 1.2s;">
-            <h2>Preprint & Downloads</h2>
-            <p>
-                The complete paper “UEFT‑2F: A Two‑Field Coherence–Decoherence Cosmology from Unified
-                Entanglement Field Theory” is available as a LaTeX‑generated PDF.
-            </p>
-            <div class="card" style="max-width: 800px; margin: 2rem auto;">
-                <h3>📄 UEFT‑2F Lite (v2.0)</h3>
+        <!-- Parameter Constraints Table -->
+        <div class="table-container glass">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Best Fit ± 1σ</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>H₀</td>
+                        <td class="param-value">67.46 ± 0.98 km/s/Mpc</td>
+                        <td>Hubble constant (Planck‑consistent)</td>
+                    </tr>
+                    <tr>
+                        <td>Ωₘ</td>
+                        <td class="param-value">0.3046 ± 0.0082</td>
+                        <td>Total matter density</td>
+                    </tr>
+                    <tr>
+                        <td>γ₀</td>
+                        <td class="param-value">0.0352 ± 0.0123</td>
+                        <td>Scale‑dependent friction amplitude</td>
+                    </tr>
+                    <tr>
+                        <td>S₈</td>
+                        <td class="param-value">0.7833 ± 0.0073</td>
+                        <td>Structure growth parameter (reduced by 5.5%)</td>
+                    </tr>
+                    <tr>
+                        <td>f(z=0)</td>
+                        <td class="param-value">0.6136</td>
+                        <td>Present‑day coherence fraction</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            Constraints from MCMC with RSD (16 points), S₈ (3 weighted), and BAO (13 points) data.
+        </p>
+    </section>
+
+    <!-- Overview Cards -->
+    <section id="overview" class="container fade-in" style="animation-delay: 0.6s;">
+        <h2>Bridging Scales: From Lattice to Cosmos</h2>
+        <p class="subtitle" style="font-size: 1.2rem; margin-bottom: 3rem;">
+            The same mathematical structure—coherence flow toward an attractor—appears in
+            lattice simulations and cosmological evolution.
+        </p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🔬</div>
+                <h3>Lattice UEFT</h3>
                 <p>
-                    <strong>Abstract:</strong> We present UEFT‑2F, a two‑field cosmology derived from
-                    Unified Entanglement Field Theory, where coherent and decoherent fields exchange
-                    energy and momentum. The model features a natural 70/30 attractor and scale‑dependent
-                    friction calibrated by lattice simulations. Using MCMC with RSD, S<sub>8</sub>, and BAO data,
-                    we find S<sub>8</sub> = 0.7833 ± 0.0073 (5.5% reduction from Planck), with Δχ² ≈ −30.1
-                    compared to ΛCDM.
+                    GL(3,ℂ) link variables on a discrete torus. Holonomy terms drive coherence,
+                    with a phase transition at κ<sub>crit</sub> ≈ 0.889. Coherence length ξ ≈ 2.7 lattice units.
+                    Vortex scattering reveals a universal hard core (~18 lattice units).
                 </p>
-                <div class="btn-group">
-                    <a href="papers/ueft_2f_paper_v2.tex" class="btn" target="_blank">
-                        📥 Download LaTeX Source
-                    </a>
-                    <a href="papers/ueft2f_refs.bib" class="btn btn-outline" target="_blank">
-                        📚 Bibliography
-                    </a>
-                    <a href="https://zenodo.org" class="btn btn-outline" target="_blank">
-                        🌐 Zenodo DOI (coming soon)
-                    </a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌌</div>
+                <h3>UEFT‑2F Cosmology</h3>
+                <p>
+                    Two interacting fields: coherent (dark‑energy‑like, w ≈ −1) and decoherent
+                    (dark‑matter‑like, w ≈ 0). Natural 70/30 attractor explains the dark‑sector split.
+                    Scale‑dependent friction calibrated from lattice coherence length.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualizations -->
+    <section id="lattice" class="container fade-in" style="animation-delay: 0.8s;">
+        <h2>Lattice‑Cosmology Connection</h2>
+        <p class="subtitle" style="font-size: 1.2rem; margin-bottom: 2rem;">
+            Direct mapping between lattice simulations and cosmological parameters.
+        </p>
+        <div class="image-grid">
+            <div class="image-card">
+                <img src="assets/images/ueft2f_lattice_cosmology_mapping.png" alt="Lattice‑Cosmology Mapping">
+                <div class="image-card-content">
+                    <h3>Mapping κ → ξ</h3>
+                    <p>Critical coupling κ<sub>crit</sub> ≈ 0.889 maps to cosmological friction parameter ξ<sub>crit</sub> ≈ 0.9.</p>
                 </div>
             </div>
-        </section>
+            <div class="image-card">
+                <img src="assets/images/ueft2_lite_growth.png" alt="Scale‑Dependent Growth">
+                <div class="image-card-content">
+                    <h3>Scale‑Dependent Growth</h3>
+                    <p>Suppressed structure growth at small scales (k > 0.02 h/Mpc) alleviates S₈ tension.</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="assets/images/ueft2f_coherence_evolution.png" alt="Coherence Evolution">
+                <div class="image-card-content">
+                    <h3>Coherence Evolution</h3>
+                    <p>Coherence fraction f evolves toward 70/30 attractor from redshift z ≈ 2 to present.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Philosophy -->
-        <section id="philosophy" class="philosophy fade-in" style="animation-delay: 1.4s;">
+    <!-- Paper Download -->
+    <section id="paper" class="container fade-in" style="animation-delay: 1s;">
+        <h2>Preprint & Downloads</h2>
+        <p>
+            The complete paper “UEFT‑2F: A Two‑Field Coherence–Decoherence Cosmology from Unified
+            Entanglement Field Theory” is available as a LaTeX‑generated PDF.
+        </p>
+        <div class="card" style="max-width: 900px; margin: 3rem auto;">
+            <h3>📄 UEFT‑2F Lite (v2.0) – Lattice‑Calibrated Scale‑Dependent Model</h3>
+            <p>
+                <strong>Abstract:</strong> We present UEFT‑2F, a two‑field cosmology derived from
+                Unified Entanglement Field Theory, where coherent and decoherent fields exchange
+                energy and momentum. The model features a natural 70/30 attractor and scale‑dependent
+                friction calibrated by lattice simulations. Using MCMC with RSD, S₈, and BAO data,
+                we find S₈ = 0.7833 ± 0.0073 (5.5% reduction from Planck), with Δχ² ≈ −30.1
+                compared to ΛCDM.
+            </p>
+            <div class="btn-group">
+                <a href="papers/ueft_2f_paper_v2.tex" class="btn" target="_blank">
+                    📥 LaTeX Source
+                </a>
+                <a href="papers/ueft2f_refs.bib" class="btn btn-outline" target="_blank">
+                    📚 Bibliography
+                </a>
+                <a href="https://zenodo.org/record/XXXXXXX" class="btn btn-outline" target="_blank">
+                    🌐 Zenodo DOI
+                </a>
+                <a href="https://github.com/andithxcommercial/ueft-physics" class="btn btn-outline" target="_blank">
+                    ⭐ GitHub
+                </a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <h3>Additional Resources</h3>
+            <div class="btn-group" style="justify-content: center;">
+                <a href="assets/data/ueft2f_lite_results_summary.txt" class="btn btn-outline">
+                    📊 Full Results Table
+                </a>
+                <a href="assets/data/ueft2f_lite_powerlaw_results_long.txt" class="btn btn-outline">
+                    📈 MCMC Details
+                </a>
+                <a href="assets/data/ueft2f_bao_results_summary.txt" class="btn btn-outline">
+                    🌐 BAO Analysis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section id="philosophy" class="philosophy fade-in" style="animation-delay: 1.2s;">
+        <div class="container">
             <h2>Philosophical Outlook</h2>
             <p class="subtitle" style="font-size: 1.2rem; margin-bottom: 2rem;">
                 Beyond parameter fitting: coherence as a unifying principle bridging lattice gauge theory,
@@ -148,10 +441,12 @@
                 and Rovelli’s relational quantum mechanics, while offering concrete, testable predictions
                 in both lattice and cosmological domains.
             </p>
-        </section>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="fade-in" style="animation-delay: 1.6s;">
+    <!-- Footer -->
+    <footer class="fade-in" style="animation-delay: 1.4s;">
+        <div class="container">
             <h3>Unified Entanglement Field Theory</h3>
             <p>Independent theoretical research by Sebastian Werner</p>
             <div class="links">
@@ -159,19 +454,21 @@
                 <a href="#paper">📄 Paper</a>
                 <a href="#philosophy">🧭 Philosophy</a>
                 <a href="#results">📊 Results</a>
+                <a href="#lattice">🔬 Lattice</a>
+                <a href="#cosmology">🌌 Cosmology</a>
             </div>
             <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">
                 This work is shared openly under a Creative Commons Attribution 4.0 International License.
                 Hosted on a private server; preprints archived via Zenodo.
             </p>
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">
-                Last updated: February 2026 · Built with OpenClaw
+                Last updated: February 2026 · Built with OpenClaw · UEFT‑2F v2.0
             </p>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
     <script>
-        // Simple fade-in on scroll
+        // Fade-in on scroll
         document.addEventListener('DOMContentLoaded', function() {
             const faders = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => {
@@ -188,6 +485,22 @@
                 fader.style.transform = 'translateY(20px)';
                 fader.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(fader);
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>

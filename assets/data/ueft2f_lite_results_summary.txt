@@ -1,0 +1,14 @@
+UEFT‑2F LITE (Lattice‑Calibrated Scale‑Dependent Growth)
+=========================================================
+Fixed: f*=0.7, μ₀=0.0, α₀=0.8, a_trans=0.35, k*=0.02 h/Mpc
+Free parameters: H₀, Ω_m, γ₀
+Data: RSD=16, S₈=3, BAO=13
+
+H0      : 67.1597 ± 1.1022
+Omega_m : 0.3055 ± 0.0065
+gamma0  : 0.0356 ± 0.0107
+
+Best fit:
+H0       = 67.3799
+Omega_m  = 0.3033
+gamma0   = 0.0330
