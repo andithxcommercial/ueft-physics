@@ -27,12 +27,12 @@ The $\Lambda$CDM model provides an excellent fit to a wide range of cosmological
 Various approaches have been proposed: modified gravity \cite{hu2007}, interacting dark energy--dark matter \cite{amendola2000}, early dark energy \cite{poulin2019}, and neutrino properties \cite{kreisch2020}. While these models often improve the fit to $S_8$, they typically lack a microscopic foundation and rarely connect to other domains of physics.
 
 \subsection{Unified Entanglement Field Theory: A Cross‑Scale Framework}
-Unified Entanglement Field Theory (UEFT) proposes that information, expressed as entanglement patterns of fundamental fields, underlies both spacetime geometry and material phenomena \cite{werner2024}. The theory posits a single framework applicable from lattice gauge theories ($\text{GL}(3,\mathbb{C})$ link variables) to cosmological perturbations and even cellular coherence in biology.
+Unified Entanglement Field Theory (UEFT) proposes that information, expressed as entanglement patterns of fundamental fields, underlies both spacetime geometry and material phenomena \cite{werner2024}. The theory posits a single framework applicable from lattice gauge theories ($\text{GL}(3,\mathbb{C})$ link variables) to cosmological perturbations.
 
 In this work we present \textbf{UEFT‑2F Lite}, a minimal, lattice‑calibrated cosmological model derived from UEFT. It features two interacting components: a coherent field (dark energy–like, $w=-1$) and a decoherent field (dark matter–like, $w=0$). The coherence fraction $f(a)$ evolves toward a natural 70/30 attractor, explaining the observed dark‑sector split without fine‑tuning. Linear perturbations experience scale‑dependent friction derived from lattice simulations, reducing $S_8$ while preserving the $\Lambda$CDM background expansion.
 
 \subsection{Philosophical Outlook: Coherence as a Unifying Principle}
-Beyond parameter fitting, UEFT‑2F offers a conceptual shift: \emph{coherence} becomes a dynamical quantity that governs energy exchange between dark components. This viewpoint resonates with information‑theoretic approaches to gravity \cite{jacobson1995} and provides a bridge to biological systems, where coherence–decoherence dynamics regulate cellular function \cite{werner2024b}. The same mathematical structure—a flow equation driving a system toward an attractor—appears in cosmological, lattice‑gauge, and biomedical contexts, suggesting a deep universality.
+Beyond parameter fitting, UEFT‑2F offers a conceptual shift: \emph{coherence} becomes a dynamical quantity that governs energy exchange between dark components. This viewpoint resonates with information‑theoretic approaches to gravity \cite{jacobson1995}. The same mathematical structure—a flow equation driving a system toward an attractor—appears in both lattice‑gauge and cosmological contexts, suggesting a deep universality rooted in information entanglement.
 
 \subsection{Outline of the Paper}
 Section~\ref{sec:theory} details the theoretical framework, from the fundamental UEFT postulates to the cosmological flow equation. Section~\ref{sec:lite} introduces UEFT‑2F Lite, a three‑parameter scale‑dependent model calibrated by lattice simulations. Section~\ref{sec:method} describes data and statistical methodology. Section~\ref{sec:results} presents parameter constraints and goodness‑of‑fit. Section~\ref{sec:discussion} discusses implications, predictions, and limitations. Section~\ref{sec:philosophy} explores the broader philosophical and interdisciplinary perspectives opened by UEFT. Section~\ref{sec:conclusion} concludes and outlines future directions.
@@ -40,9 +40,9 @@ Section~\ref{sec:theory} details the theoretical framework, from the fundamental
 \section{Theoretical Framework}\label{sec:theory}
 
 \subsection{UEFT Postulates and Cosmological Reduction}
-Unified Entanglement Field Theory (UEFT) posits that the fundamental degrees of freedom are complex‑valued link variables $V_\ell \in \text{GL}(3,\mathbb{C})$ living on the edges of a lattice. The action consists of a mass term $\mu^2|V|^2$, a self‑interaction $g|V|^4$, and a holonomy term $\kappa\,\text{Re}\,\text{tr}(V_\triangle)$ that enforces coherence across lattice plaquettes. In the continuum limit, the system exhibits a phase transition at a critical coupling $\kappa_{\text{crit}} \approx 0.89$, separating a disordered (decoherent) phase from an ordered (coherent) one.
+Unified Entanglement Field Theory (UEFT) posits that the fundamental degrees of freedom are complex‑valued link variables $V_\ell \in \text{GL}(3,\mathbb{C})$ living on the edges of a lattice. The action consists of a mass term $\mu^2|V|^2$, a self‑interaction $g|V|^4$, and a holonomy term $\kappa\,\text{Re}\,\text{tr}(V_\triangle)$ that enforces coherence across lattice plaquettes. Exploratory mock data generated with a sigmoid function suggested a phase transition at $\kappa \approx 0.89$; however, actual lattice simulations with the standard parameters ($\mu^2=1.0$, $g=0.5$) show a smooth, monotonic increase of the order parameter $A_{\text{eq}}(\kappa)$ with no sharp critical point. The system remains in an ordered (coherent) state for all $\kappa>0$ within the studied range.
 
-To connect lattice UEFT to cosmology, we coarse‑grain over many lattice sites and identify the local order parameter $A_{\text{eq}}(\kappa)$ with the cosmological coherence fraction $f(a)$. The lattice coupling $\kappa$ maps to the dimensionless cosmological coupling $\xi(a) \equiv Q/(H\rho_d)$. The phase transition in the lattice corresponds to the cosmological transition from decoherence‑dominated early times ($f \ll f^*$) to coherence‑dominated late times ($f \to f^*$).
+To connect lattice UEFT to cosmology, we coarse‑grain over many lattice sites and identify the local order parameter $A_{\text{eq}}(\kappa)$ with the cosmological coherence fraction $f(a)$. The lattice coupling $\kappa$ maps heuristically to the dimensionless cosmological coupling $\xi(a) \equiv Q/(H\rho_d)$. While no sharp lattice phase transition is observed, the gradual increase of $A_{\text{eq}}$ with $\kappa$ motivates a similar gradual evolution of $f(a)$ from decoherence‑dominated early times ($f \ll f^*$) toward coherence‑dominated late times ($f \to f^*$).
 
 \subsection{Two‑Fluid Cosmological Model}
 The coarse‑grained UEFT dynamics reduce to a two‑fluid system:
@@ -109,19 +109,13 @@ Lattice UEFT simulations measure a coherence length $\xi_{\text{coh}} \approx 2.
 \end{equation}
 For $k \ll k^*$ the suppression is negligible; for $k \gg k^*$ it approaches the scale-independent limit $\gamma_0(1-f)$. The effective gravitational coupling modulation $\mu(a)$ is set to zero in this simplified version, leaving three free parameters: $H_0$, $\Omega_m$, $\gamma_0$. All other parameters are fixed to their lattice-informed values: $\alpha_0 = 0.8$, $\mu_0 = 0$, $a_{\text{trans}} = 0.35$, $f^* = 0.70$.
 
-\subsection{Connection to Lattice UEFT}
-Gitter-UEFT simulations \cite{werner2024} study GL(3,$\mathbb{C}$) link variables on periodic lattices ($L=36,64$). The order parameter $A_{\text{eq}}(\kappa)$ shows a phase transition at $\kappa_{\text{crit}} \approx 0.89$. We identify:
-\begin{align}
-\kappa &\leftrightarrow \xi(a) \quad \text{(coupling strength)}, \\
-A_{\text{eq}} &\leftrightarrow f(a) \quad \text{(coherence parameter)}, \\
-L &\leftrightarrow 1/H(a) \quad \text{(system size)}.
-\end{align}
-Hysteresis in lattice simulations (warm\_forward vs warm\_backward) suggests possible multiple cosmological attractors.
+\subsection{Lattice‑cosmology mapping: current status}
+Exploratory mock data generated with a sigmoid function suggested a phase transition at $\kappa \approx 0.89$, which was initially taken as motivation for the cosmological mapping $\kappa \leftrightarrow \xi(a)$. Subsequent real lattice simulations with the full UEFT Hamiltonian (standard parameters $\mu^2=1.0$, $g=0.5$) show a smooth, monotonic increase of the order parameter $A_{\text{eq}}(\kappa)$ with no evidence of a sharp critical point (Fig.~\ref{fig:mock_vs_real}). The coherence length $\xi \approx 2.7$ lattice units is measured from real autocorrelation data ($\kappa=0.95$) and, under a plausible choice of lattice spacing, translates to a characteristic scale $k^* \approx 0.02\;h/\text{Mpc}$. While the lattice analogy provides qualitative motivation for the two‑field structure and the 70/30 attractor, the primary empirical support for UEFT‑2F comes from its improved fit to cosmological data ($\Delta\chi^2 \approx -30$). A rigorous derivation of the mapping $\kappa \leftrightarrow \xi(a)$ from first principles remains a task for future work.
 
 \section{UEFT‑2F Lite: A Minimal Scale‑Dependent Model}\label{sec:lite}
 
 \subsection{Motivation for a Minimal Model}
-The full UEFT‑2F model has seven free parameters ($H_0$, $\Omega_m$, $\alpha_0$, $\gamma_0$, $\mu_0$, $a_{\text{trans}}$, $f^*$), which can be reduced by leveraging insights from lattice simulations. The lattice‑measured coherence length $\xi_{\text{coh}} \approx 2.7$ lattice units provides a characteristic scale $k^* \approx 0.02\;h/\text{Mpc}$ that fixes the onset of scale‑dependent growth suppression. Moreover, the phase‑transition analysis suggests a natural attractor value $f^* = 0.70$ and a transition redshift $z_{\text{trans}} \approx 1.9$ ($a_{\text{trans}} = 0.35$). The coupling strength $\alpha_0$ can be set to $0.8$ (the value that reproduces the observed dark‑energy fraction today), and the gravitational modulation $\mu_0$ can be set to zero without worsening the fit to current data.
+The full UEFT‑2F model has seven free parameters ($H_0$, $\Omega_m$, $\alpha_0$, $\gamma_0$, $\mu_0$, $a_{\text{trans}}$, $f^*$), which can be reduced by leveraging insights from lattice simulations. The lattice‑measured coherence length $\xi_{\text{coh}} \approx 2.7$ lattice units provides a characteristic scale $k^* \approx 0.02\;h/\text{Mpc}$ that fixes the onset of scale‑dependent growth suppression. The attractor value $f^* = 0.70$ emerges from the flow‑equation analysis, and the transition redshift $z_{\text{trans}} \approx 1.9$ ($a_{\text{trans}} = 0.35$) is chosen to match the onset of dark‑energy domination, not derived from a lattice critical point. The coupling strength $\alpha_0$ can be set to $0.8$ (the value that reproduces the observed dark‑energy fraction today), and the gravitational modulation $\mu_0$ can be set to zero without worsening the fit to current data.
 
 This leaves only three free cosmological parameters: the Hubble constant $H_0$, the matter density $\Omega_m$, and the friction amplitude $\gamma_0$. We call this reduced version \textbf{UEFT‑2F Lite}. It is a scale‑dependent, lattice‑calibrated model that retains the essential physical mechanism—coherence‑driven friction—while being tightly predictive.
 
@@ -154,7 +148,7 @@ where we have set $\mu(a)=0$ (no modification of the gravitational coupling). Th
 \subsection{Fixed Parameters and Their Justification}
 \begin{itemize}
 \item $f^* = 0.70$: The 70/30 attractor emerges from lattice simulations as the stable fixed point of the flow equation; it also matches the observed dark‑energy fraction $\Omega_\Lambda \approx 0.7$.
-\item $a_{\text{trans}} = 0.35$ ($z \approx 1.9$): The lattice phase transition occurs at a specific coupling strength; mapped to cosmology, this corresponds to a transition redshift around $z \sim 2$, consistent with the onset of dark‑energy domination.
+\item $a_{\text{trans}} = 0.35$ ($z \approx 1.9$): The transition redshift is chosen to match the onset of dark‑energy domination ($z \sim 2$), not derived from a lattice critical point.
 \item $\alpha_0 = 0.8$: Chosen so that $f(z=0) \approx 0.61$, yielding $\Omega_\Lambda(z=0) \approx 0.69$.
 \item $\mu_0 = 0$: A non‑zero $\mu_0$ improves the fit only marginally and introduces an extra parameter; we omit it for minimality.
 \item $k^* = 0.02\;h/\text{Mpc}$: Directly measured from lattice autocorrelations.
@@ -291,7 +285,7 @@ Figure~\ref{fig:S8} compares the UEFT‑2F $S_8$ posterior with measurements fro
 
 Figure~\ref{fig:coherence} shows the evolution of the coherence parameter $f(a)$. Starting from $f=0.5$ at early times, it approaches the attractor $f^*=0.70$ by $z=0$, with the transition occurring around $z \approx 1.9$ ($a_{\text{trans}}=0.35$).
 
-Figure~\ref{fig:lattice} illustrates the lattice‑cosmology mapping, comparing the phase transition in lattice UEFT simulations with the cosmological evolution of the coupling $\xi(a)$.
+Figure~\ref{fig:mock_vs_real} compares exploratory mock data with real lattice simulations, demonstrating the absence of a sharp phase transition and motivating a heuristic mapping $\kappa \leftrightarrow \xi(a)$.
 
 \begin{figure}[ht]
 \centering
@@ -316,9 +310,9 @@ Figure~\ref{fig:lattice} illustrates the lattice‑cosmology mapping, comparing 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.9\textwidth]{ueft2f_lattice_cosmology_mapping.pdf}
-\caption{Lattice‑cosmology mapping: left panel shows the phase transition in lattice UEFT simulations ($\kappa_{\text{crit}}=0.889$); right panel shows the cosmological evolution of the coupling $\xi(a)$ ($\xi_{\text{crit}} \approx 0.9$). The quantitative consistency ($\Delta=0.011$) supports the identification $\kappa \leftrightarrow \xi$.}
-\label{fig:lattice}
+\includegraphics[width=0.9\textwidth]{ueft2f_mock_vs_real.png}
+\caption{Comparison of exploratory mock data and real lattice simulations. Top left: order parameter $A_{\text{eq}}(\kappa)$; mock data (red sigmoid) suggested a phase transition at $\kappa \approx 0.89$, while real simulations (blue circles) show a smooth, monotonic increase. Top right: normalized $A_{\text{eq}}$; the real curve crosses 0.5 at $\kappa \approx 1.09$, not 0.89. Bottom left: estimated correlation length $\xi(\kappa)$ from neighbour correlations (green squares), much smaller than the autocorrelation length $\xi \approx 2.7$ (black dashed). Bottom right: energy per edge. The absence of a sharp critical point indicates that the mapping $\kappa \leftrightarrow \xi(a)$ is heuristic rather than derived from a phase transition.}
+\label{fig:mock_vs_real}
 \end{figure}
 
 \section{Discussion}\label{sec:discussion}
@@ -346,28 +340,27 @@ Coherence as a cosmological parameter offers an information-theoretic perspectiv
 \section{Philosophical Outlook}\label{sec:philosophy}
 
 \subsection{Coherence as a Unifying Principle}
-The UEFT framework elevates \emph{coherence} from a mere phenomenological descriptor to a fundamental dynamical quantity. In cosmology, it governs the energy exchange between dark components; in lattice gauge theory, it determines the phase of the system; in cellular biology, it regulates metabolic and epigenetic coordination. This tripartite appearance of the same mathematical structure—a flow equation driving a system toward an attractor—suggests that coherence might be a universal organizational principle across scales.
+The UEFT framework elevates \emph{coherence} from a mere phenomenological descriptor to a fundamental dynamical quantity. In cosmology, it governs the energy exchange between dark components; in lattice gauge theory, it determines the phase of the system. This dual appearance of the same mathematical structure—a flow equation driving a system toward an attractor—suggests that coherence might be a universal organizational principle across scales, rooted in information entanglement.
 
 \subsection{Information‑Theoretic Foundations}
 UEFT aligns with the growing perspective that information, not matter or energy, is the primary currency of physical law \cite{jacobson1995, verlinde2011}. The coherent field $A$ can be interpreted as the ``in‑phase'' component of the underlying information field, while the decoherent field $B$ represents noise or lost correlations. The 70/30 attractor then reflects a natural balance between order and disorder, reminiscent of the holographic bound or the second law of thermodynamics applied to cosmological horizons.
 
-\subsection{Bridging Scales: From Lattice to Cosmos to Cell}
+\subsection{Bridging Scales: From Lattice to Cosmos}
 A remarkable feature of UEFT is its applicability across vastly different scales:
 \begin{itemize}
 \item \textbf{Microscopic (lattice):} $\text{GL}(3,\mathbb{C})$ link variables on a discrete torus, with coherence emerging via holonomy terms.
 \item \textbf{Cosmological:} Two interacting fluids governing the expansion history and structure growth of the Universe.
-\item \textbf{Biomedical:} Cellular coherence quantified by the F‑Lab‑Index, linking metabolism, redox state, mitochondrial potential, and epigenetic marks \cite{werner2024b}.
 \end{itemize}
-The same flow equation $\dot{f} = \alpha (f - f^*)$ appears in all three domains, with parameters adapted to the relevant energy and time scales. This is not a mere analogy but a consequence of the universal role that information entanglement plays in complex systems.
+The same flow equation $\dot{f} = \alpha (f - f^*)$ appears in both domains, with parameters adapted to the relevant energy and time scales. This is not a mere analogy but a consequence of the universal role that information entanglement plays in complex systems.
 
 \subsection{Implications for Quantum Gravity and Beyond}
 If UEFT's identification of lattice coupling $\kappa$ with cosmological coupling $\xi$ holds at a deeper level, it suggests that spacetime itself might emerge from a network of entangled links, akin to tensor networks or spin‑foam models \cite{rovelli2004}. The coherence length $\xi_{\text{coh}}$ would then be a fundamental granularity scale, potentially detectable via high‑precision measurements of the matter power spectrum at $k > 0.02\;h/\text{Mpc}$.
 
 \subsection{Toward a New Interdisciplinary Language}
-UEFT offers a concrete mathematical language—coherence fraction $f$, coupling $\xi$, friction $\gamma$—that can be shared by cosmologists, condensed‑matter physicists, and systems biologists. This shared vocabulary could facilitate unexpected cross‑fertilization: for instance, techniques from lattice gauge theory might help analyze cellular networks, while biomedical time‑series data could provide new insights into non‑equilibrium attractor dynamics.
+UEFT offers a concrete mathematical language—coherence fraction $f$, coupling $\xi$, friction $\gamma$—that can be shared by cosmologists, condensed‑matter physicists, and lattice gauge theorists. This shared vocabulary could facilitate unexpected cross‑fertilization: for instance, techniques from lattice gauge theory might help analyze cosmological perturbations, while cosmological constraints could inform the parameter space of fundamental lattice models.
 
 \subsection{Ethical and Existential Reflections}
-A theory that bridges cosmology and medicine inevitably touches on existential questions. If cosmic coherence influences structure formation, and cellular coherence influences health, could there be a deeper connection between the ``health'' of the Universe and the well‑being of its inhabitants? While speculative, such parallels remind us that science is not just about equations but about understanding our place in a coherent, evolving whole.
+A theory that posits information entanglement as the foundation of spacetime and matter inevitably touches on existential questions. If cosmic coherence governs the large‑scale structure of the Universe, what does this imply about the role of information in the fabric of reality? While speculative, such perspectives remind us that science is not just about equations but about understanding our place in a coherent, evolving whole.
 
 \section{Conclusion}\label{sec:conclusion}
 UEFT-2F presents a physically motivated cosmology that alleviates the $S_8$ tension while preserving $\Lambda$CDM's successes. The model's coherence--decoherence framework, connection to lattice simulations, and good fit to current data make it a compelling alternative to $\Lambda$CDM. Future observations will test its predictions, potentially validating the information-theoretic approach to cosmology.
